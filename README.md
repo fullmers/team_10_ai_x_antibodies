@@ -184,9 +184,13 @@ were aiming for.
 
 ---
 
+TODO 
+
 ## What we did measure
 - **Novelty condition 2.** The ≥2-mutation check against all 525,063 provided
   sequences.
+- **Thermostability**
+- **Developability**
   
 
 ## Why this is useful
