@@ -1,0 +1,40 @@
+"# PROXY ONLY, NOT A Tm PREDICTION. Loop-level glycine/proline/flexible-run counts plus whole-binder refold pLDDT. Uncalibrated against any stability measurement."
+# parent WGGDGFYAMD: gly=3 pro=0 flex_run(G/S)=2 gly_run=2; parent has no refold pLDDT (not refolded); pLDDT compared with the median of the 37 designs = 97.79
+design,cdrh3,pick,gly_count,pro_count,flex_run,gly_run,gly_vs_parent,pro_vs_parent,flex_run_vs_parent,binder_plddt,plddt_vs_design_median,flexibility_worse_than_parent,reasons
+her2_cdrh3_140,SLSLSNYAFD,yes,0,0,1,0,-3,0,-1,98.59,+0.80,no,
+her2_cdrh3_7,SLSLSNYAFD,yes,0,0,1,0,-3,0,-1,98.59,+0.80,no,
+her2_cdrh3_98,TRAAVGYAHD,yes,1,0,1,1,-2,0,-1,98.32,+0.54,no,
+her2_cdrh3_31,WSSAVGYAHD,yes,1,0,2,1,-2,0,0,98.16,+0.37,no,
+her2_cdrh3_57,DLSYYNHAFD,yes,0,0,1,0,-3,0,-1,97.94,+0.15,no,
+her2_cdrh3_9,SLSLSNFAFD,,0,0,1,0,-3,0,-1,98.60,+0.81,no,
+her2_cdrh3_195,STSAVDYAMD,,0,0,1,0,-3,0,-1,98.30,+0.51,no,
+her2_cdrh3_82,STSAVDYAMD,,0,0,1,0,-3,0,-1,98.30,+0.51,no,
+her2_cdrh3_37,TTAAVGYAHD,,1,0,1,1,-2,0,-1,98.29,+0.50,no,
+her2_cdrh3_192,DLSSSDHAFD,,0,0,3,0,-3,0,1,98.22,+0.43,yes,flexible G/S run 3 > 2
+her2_cdrh3_85,STSALDYAMD,,0,0,1,0,-3,0,-1,98.21,+0.42,no,
+her2_cdrh3_35,DLSLSEHAFD,,0,0,1,0,-3,0,-1,98.18,+0.39,no,
+her2_cdrh3_154,STSSVDYAMD,,0,0,2,0,-3,0,0,98.15,+0.36,no,
+her2_cdrh3_39,SLYVNNYSYD,,0,0,1,0,-3,0,-1,98.13,+0.34,no,
+her2_cdrh3_179,TTAAVDYAHD,,0,0,0,0,-3,0,-2,98.12,+0.33,no,
+her2_cdrh3_170,SLSLYNFAFD,,0,0,1,0,-3,0,-1,98.08,+0.29,no,
+her2_cdrh3_147,DLSSSDFAFD,,0,0,3,0,-3,0,1,98.06,+0.27,yes,flexible G/S run 3 > 2
+her2_cdrh3_17,DLSSSDYAFD,,0,0,3,0,-3,0,1,97.97,+0.18,yes,flexible G/S run 3 > 2
+her2_cdrh3_152,SLYPDFYVFD,,0,1,1,0,-3,1,-1,97.79,+0.00,no,
+her2_cdrh3_136,WHSLHEYYFD,,0,0,1,0,-3,0,-1,97.70,-0.08,no,
+her2_cdrh3_43,SLSLSDYAFD,,0,0,1,0,-3,0,-1,97.52,-0.27,no,
+her2_cdrh3_181,DLSLHNHAFD,,0,0,1,0,-3,0,-1,97.41,-0.38,no,
+her2_cdrh3_114,YASSSDYYFD,,0,0,3,0,-3,0,1,97.20,-0.58,yes,flexible G/S run 3 > 2
+her2_cdrh3_148,WRSLSEYYFD,,0,0,1,0,-3,0,-1,97.18,-0.61,no,
+her2_cdrh3_169,WASLYYYYHD,,0,0,1,0,-3,0,-1,97.06,-0.73,no,
+her2_cdrh3_175,WKSLYEYYFD,,0,0,1,0,-3,0,-1,96.95,-0.84,no,
+her2_cdrh3_113,DMFFPYYAMD,,0,1,0,0,-3,1,-2,96.92,-0.87,no,
+her2_cdrh3_22,WKSTTQYYFD,,0,0,1,0,-3,0,-1,96.85,-0.94,no,
+her2_cdrh3_64,WHSLYEYYFD,,0,0,1,0,-3,0,-1,96.77,-1.01,no,
+her2_cdrh3_30,DILSGYAIFD,,1,0,2,1,-2,0,0,96.69,-1.10,no,
+her2_cdrh3_134,YMSLYYYAFD,,0,0,1,0,-3,0,-1,96.62,-1.17,no,
+her2_cdrh3_95,WRSLFEYYFD,,0,0,1,0,-3,0,-1,96.13,-1.66,no,
+her2_cdrh3_149,YMNLYYYAFD,,0,0,0,0,-3,0,-2,96.05,-1.74,no,
+her2_cdrh3_60,WKSLYDYYFD,,0,0,1,0,-3,0,-1,96.00,-1.78,no,
+her2_cdrh3_27,DLFFPYYAFD,,0,1,0,0,-3,1,-2,95.99,-1.80,no,
+her2_cdrh3_193,WASLHDYYHD,,0,0,1,0,-3,0,-1,95.63,-2.16,no,
+her2_cdrh3_184,YMSLYYYEFD,,0,0,1,0,-3,0,-1,95.28,-2.51,no,

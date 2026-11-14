@@ -489,3 +489,150 @@ is **`her2_cdrh3_140` / `her2_cdrh3_7` — `SLSLSNYAFD`, min_ipae 0.308, iptm 0.
 
 `pass` is empty for all 60 rows, as for the pilot (`pass_note`: missing
 `refolded_target_aligned_binder_rmsd.rmsd`).
+
+## Stability proxy — 37 strict-passing designs (`scripts/stability_proxy.csv`)
+
+Loop-level glycine count, proline count, longest G/S run, plus whole-binder refold
+pLDDT, each against the parent `WGGDGFYAMD` (3 Gly, 0 Pro, G/S run 2). **Proxy only,
+not a Tm prediction; uncalibrated.** No design has more glycines than the parent
+(33 have none, 4 have one). 4 flagged worse on flexible-run length only
+(`DLSSSDHAFD`, `DLSSSDFAFD`, `DLSSSDYAFD`, `YASSSDYYFD`: `SSS` run of 3 vs 2). 3 carry
+a proline (reported, not scored). The four picks are not worse than the parent.
+The parent was not refolded, so pLDDT is compared with the design median (97.79)
+instead; binder pLDDT is global, not loop-local, and spans only 95.3-98.6.
+Script: `scripts/stability_proxy.py`.
+
+## De novo VHH vs HER2 domain IV (`runs/denovo`, antibody-2026-10-30, seed 4)
+
+Goal: a new VHH to HER2 domain IV (not a CDRH3 redesign of trastuzumab), same epitope
+as trastuzumab. Weight/image: `...apheris-rfd4-proteina-v0.3.0-antibody-2026-10-30`.
+
+### Input format (from `15-antibody-design.md`, `03-antibodies.md`, and the shipped example)
+
+The shipped VHH example (`Data/03-vhh/pmvk_caplacizumab.cif.zst`) carries the whole
+design spec inside the mmCIF, with no separate YAML. Chain H is an 86-residue
+caplacizumab framework in which each CDR is one `HETATM UNK` placeholder with NaN
+coordinates; its `comp_id` is the allowed length range (H23 `13-13`, H38 `9-10`,
+H76 `12-21`). Per-atom columns carry `condition_sequence`, `condition_hotspot`,
+`condition_cath-label` (`2.60.40.x` on the antibody) and `condition_CoordinateGroup`.
+Only backbone atoms (N, CA, C, O) are in a coordinate group; side chains are -1, and
+hotspots are side-chain atoms. The example's antigen (PMVK) was not usable for HER2,
+so a hybrid had to be built: `scripts/build_denovo_input.py` grafts caplacizumab
+chain H (3 placeholders) with HER2 chains C (489-580, 92 residues) and D (591-607,
+17 residues) from `her2_fv_1n8z.cif`, with the same 4 hotspots as the CDRH3 run
+(`D/593/NZ`, `C/573/CD1`, `D/591/CG2`, `C/572/CD`). 1,484 atoms.
+
+### Input build: four builds, three failures, and the coordinate-group finding
+
+Validation = a 1-2 design test run (`module-run design --num-replicates 2`).
+
+| # | build | result |
+| --- | --- | --- |
+| 1 | HER2 on coordinate group 0, all non-hotspot atoms incl. side chains; HER2 rows first | FAIL 13:41 |
+| 2 | HER2 on group 0, backbone atoms only (as in the example) | FAIL 13:48 |
+| 3 | as 2, with antibody rows first (as in the example) | FAIL 13:49 |
+| 4 | **relative groups: framework = 1, HER2 backbone = 2, no group 0** | **PASS 13:50** |
+
+Builds 1-3 all failed with the same message:
+`Transforms failed at stage MaterializeInternalCoords: Absolute coordinate targets
+must exist exactly on coordinate group 0.` Neither the side-chain/backbone split nor
+row order was the cause.
+
+**Finding:** with a two-chain HER2 antigen, pinning HER2 as absolute coordinates on
+group 0 (the PMVK example's convention) is rejected. The convention that validates is
+the one the existing `her2_cdrh3.yaml` run uses: two relative internal-geometry groups
+(antibody framework 1, HER2 backbone 2) and no absolute group. Cause not diagnosed
+beyond that. **Consequence:** the VHH-HER2 pose is not pinned, so hotspots are the only
+steer toward the epitope. `scripts/build_denovo_input.py --antigen-mode relative`
+builds the working input; `absolute` reproduces the failing one. The failed input is
+kept as `runs/denovo/input_absolute_FAILED/`. (`runs/` is gitignored; the input is
+regenerable from the script.) The 2-design test gave two real VHHs (123 and 118
+residues) within 3.3-3.7 A of the hotspot atoms.
+
+### Run
+
+```bash
+docker run --rm --gpus all --shm-size 16g --user $(id -u):$(id -g) -e HOME=/tmp \
+  -v /etc/passwd:/etc/passwd:ro -v $PWD:/work -w /work \
+  quay.io/apheris/oslo-hackathon:apheris-rfd4-proteina-v0.3.0-antibody-2026-10-30 \
+  module-run design --input runs/denovo/input --output runs/denovo/design \
+  --num-replicates 150 --seed 4 --recycle-strategy high/front_loaded
+IMG=antibody-2026-10-30 TOPN=30 OUT=runs/denovo bash Scripts/run-her2.sh prepare   # unmodified script
+IMG=antibody-2026-10-30 TOPN=30 OUT=runs/denovo bash Scripts/run-her2.sh predict
+IMG=antibody-2026-10-30 TOPN=30 OUT=runs/denovo bash Scripts/run-her2.sh score
+```
+
+Timeline (2026-11-14): design 13:51:36 -> 14:18:59 (150/150, exit 0, ~27 min, 8.6-13
+s/design); prepare 14:18:59 -> 14:19:01; predict 14:19:01 -> 14:23:05 (30/30); score
+-> 14:23:08. Design step wrapped in `timeout` to a 15:30 hard stop; not needed.
+Variable CDR lengths did NOT break the shared-template check in refold-prepare.
+
+### Refold results (30 designs, Boltz-2, `min_ipae` in A)
+
+min_ipae min 1.64 / median 12.4 / max 21.6; iptm 0.35 / 0.45 / 0.89; binder pLDDT
+85.7 / 91.7 / 97.6. iptm > 0.7: 4/30; > 0.8: 2/30. `min_ipae` < 2.0 A (antibody pass
+line): **2/30** (`rep117` 1.638, `rep106` 1.701), then `rep48` 3.39, `rep33` 5.54,
+`rep136` 5.97. `pass` is empty/false for all 30; most fail `oracle_ppi.min_ipae_coi`,
+and the top two have empty `pass` (missing `refolded_target_aligned_binder_rmsd`).
+These are not comparable with the CDRH3-redesign run (0.31-0.48 A): that was one loop
+inside a known complex, this is de novo with an unpinned pose. Only the top 30 of 150
+were refolded, so the pass rate of the other 120 is unknown.
+
+### Check 1 — epitope (`scripts/epitope_check.py`, `scripts/epitope_check_top5.csv`)
+
+For the top 5 by min_ipae, in the refolded Boltz-2 poses: minimum distance from any
+VHH heavy atom to each hotspot atom, the VHH footprint on HER2 (residues within
+4.5 A), and overlap with trastuzumab's own epitope (19 HER2 residues within 4.5 A of
+the Fv in 1N8Z). HER2 residue mapping (Boltz renumbers 1..N) uses the query's
+`residue_ids` and asserts residue names match 1N8Z; no mismatch occurred.
+
+| design | min_ipae | iptm | D/593/NZ | C/573/CD1 | D/591/CG2 | C/572/CD | hotspots <=4.5 A | footprint (res) | in Tz epitope | % of footprint in Tz | % of Tz covered |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| rep117 | 1.64 | 0.89 | 3.4 | 4.6 | 4.2 | 3.8 | 3/4 | 14 | 11 | 79% | 58% |
+| rep106 | 1.70 | 0.89 | 4.5 | 3.8 | 5.0 | 3.7 | 3/4 | 15 | 11 | 73% | 58% |
+| rep48 | 3.39 | 0.78 | 4.0 | 4.9 | 6.2 | 3.3 | 2/4 | 9 | 9 | 100% | 47% |
+| rep33 | 5.54 | 0.71 | 8.0 | 7.6 | 15.9 | 5.3 | 0/4 | 17 | 9 | 53% | 47% |
+| rep136 | 5.97 | 0.66 | 8.1 | 7.8 | 11.6 | 3.4 | 1/4 | 21 | 8 | 38% | 42% |
+
+The top three sit on the trastuzumab epitope; `rep33` and `rep136` have drifted partly
+off it (0-1 hotspots in contact, 38-53% of the footprint inside the epitope). Caveats:
+single Boltz-2 sample per design; the input is only a domain-IV fragment (HER2
+489-607), so "elsewhere" can only mean elsewhere on that fragment; being on the
+epitope in a prediction is not evidence of binding.
+
+### Check 2 — novelty vs SAbDab2 ML subset (`scripts/sabdab_novelty.py`, `scripts/novelty_sabdab2.csv`)
+
+**Reference set is a curated subset: the SAbDab2 ML dataset (Zenodo 20083995, CC-BY-4.0,
+md5 `0dbb4cc499e9eb77f14008b232f2c38c`), 15,641 structures / 8,641 PDB entries / 5,301
+unique antibodies. It is NOT full SAbDab2 (21,237 distinct instances), and not OAS or
+any other collection.** (An earlier attempt to download "SAbDab" fetched a 2 KB HTML
+page from a stale URL; I had not opened it before treating it as a download.)
+
+Identity on CDRs, not the full sequence: the 83 fixed caplacizumab framework residues
+are 65-71% of each design, so full-length identity to caplacizumab-like VHHs is ~65-70%
+by construction. Identity = LCS / max(len), which can only over-report similarity.
+CDR3 = residues between Cys104 and the J-region Trp (validated against the database:
+`C`+CDRH3+`W` in 14,831/15,542 = 95.4%). CDR1 = placeholder[3:11] (validated 11,856/
+14,011 = 84.6%). CDR2 = placeholder[1:-1] (inferred; FR3 spacing 37 in 15,129 of the
+database, as predicted). So the CDR3 result is firmer than the CDR1+2+3 result.
+
+Fraction of the 30 with max identity < 70%: **CDR3 27/30; CDR1+2+3 29/30.**
+Failing CDR3: `rep133` 0.714 (FV 8bw0), `rep15` 0.769 (FAB 9g6s), `rep127` 0.706 (SD-H
+6b73); failing CDR1+2+3: `rep15` 0.724. Top 5 by min_ipae all pass (CDR3 0.62-0.67).
+
+**The threshold is weak here.** Control: shuffling the CDR3 middle (ends kept) and
+re-searching gives median max identity 0.61, the same as the designs' median 0.61.
+So the designs' nearest neighbours are at chance level: "no design is a near copy of a
+known CDR3 (none above 0.77)" is supported, "the designs are distinct from known
+antibodies in a way a random loop would not be" is not. Nothing here establishes
+novelty against antibodies outside the subset.
+
+### Not done / open
+
+- Epitope check covered the top 5 only. Pose-based evidence for the other 25 is absent.
+- 120 of 150 designs were never refolded.
+- `pass` unavailable for all 30 (missing rmsd evidence for the top two).
+- Boltz-2 iptm here is not comparable with the Chai-1 calibration in
+  `scripts/calibration.csv`.
+- `git push` failed earlier (`could not read Username for 'https://github.com'`): no
+  credentials on this VM, so the first commit (`5a43142`) exists locally only.
