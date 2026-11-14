@@ -79,6 +79,53 @@ NOVELTY_SCOPE_DENOVO = ("SAbDab2 ML subset ONLY (15,641 structures, 5,301 unique
                         "NOT full SAbDab); CDR LCS identity <70%; chance-level baseline")
 
 
+def _load(name: str):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(name, os.path.join(ROOT, "scripts", name + ".py"))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def prefilter(seq: str) -> dict:
+    """Hard filters, motif screen and stability proxy for one VHH chain H.
+
+    Motif definitions are developability.py's, Gly/Pro/flex-run are stability_proxy.py's, applied by
+    position on the whole chain. FLAG = a motif hit overlapping a designed region (the fixed
+    framework has none, so that is the whole baseline). Hydrophobic fraction and net charge are over
+    the designed residues (37 for these two), not a 10-mer loop, so they are not comparable with ranks 1-20.
+    """
+    pre, dev, stab = _load("denovo_prefilter"), _load("developability"), _load("stability_proxy")
+    m = pre.FRAME.match(seq)
+    names = {"s1": "CDR1", "s2": "CDR2", "s3": "CDR3"}
+    where, designed, pos = {}, set(), 0
+    for g in ("f1", "s1", "f2", "s2", "f3", "s3", "f4"):
+        n = len(m.group(g))
+        if g.startswith("s"):
+            designed |= set(range(pos, pos + n))
+            for i in range(pos, pos + n):
+                where[i] = names[g]
+        pos += n
+    dseq = "".join(seq[i] for i in sorted(designed))
+    flags = []
+    for name, a, b in pre.hits(seq, dev):
+        if name == "C":
+            continue
+        regs = sorted({where[i] for i in range(a, b) if i in designed})
+        if regs:
+            flags.append(f"{name} +1 ({seq[a:b]}, chain H {a + 1}-{b}, {'/'.join(regs)} region)")
+    sd, sw = stab.metrics(dseq), stab.metrics(seq)
+    return {
+        "cys": seq.count("C"), "length": len(seq),
+        "hydro": sum(1 for c in dseq if c in dev.HYDROPHOBIC) / len(dseq),
+        "charge": sum(1 for c in dseq if c in dev.POSITIVE) - sum(1 for c in dseq if c in dev.NEGATIVE),
+        "dev": "FLAG" if flags else "clean", "dev_detail": "; ".join(flags), "flags": flags,
+        "g_des": sd["gly_count"], "p_des": sd["pro_count"], "f_des": sd["flex_run"],
+        "g_all": sw["gly_count"], "p_all": sw["pro_count"], "f_all": sw["flex_run"],
+        "n_designed": len(dseq),
+    }
+
+
 def load_denovo() -> list[dict]:
     """The two de novo VHHs: refold scores, epitope footprint, SAbDab2-subset identity."""
     import json
@@ -95,7 +142,18 @@ def load_denovo() -> list[dict]:
     out = []
     for d in DENOVO_PICKS:
         m, e, n = met[d], epi[d], nov[d]
+        pf = prefilter(seqs[d])
+        extra = (f" Hard filters pass ({pf['cys']} Cys = the framework pair, {pf['length']} aa). "
+                 f"Designed-residue hydrophobic fraction {pf['hydro']:.2f}, net charge "
+                 f"{pf['charge']:+d}; Gly/Pro in designed residues {pf['g_des']}/{pf['p_des']} "
+                 "(stability proxy only, not a Tm prediction).")
+        if pf["flags"]:
+            extra += " DEVELOPABILITY FLAG: " + "; ".join(pf["flags"]) + "."
+        else:
+            extra += " Motif screen: no hits."
         out.append({
+            **{k: pf[k] for k in ("hydro", "charge", "dev", "dev_detail", "g_des", "p_des",
+                                  "f_des", "g_all", "p_all", "f_all")},
             "design_id": d, "cdr3": n["cdr3"], "seq": seqs[d],
             "min_ipae": float(m["min_ipae"]), "iptm": float(m["iptm"]),
             "binder_plddt": float(m["binder_plddt"]),
@@ -112,7 +170,7 @@ def load_denovo() -> list[dict]:
                 "trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; "
                 "the nearest-neighbour identity is at chance level (shuffled-loop control median "
                 "0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample "
-                "and not comparable with the CDRH3 track."),
+                "and not comparable with the CDRH3 track." + extra),
         })
     return out
 
@@ -179,6 +237,8 @@ def main() -> int:
               "min_hamming_to_chinery", "identity_pct_vs_WGGDGFYAMD", "mutations",
               "hydrophobic_fraction", "net_charge", "developability",
               "developability_detail", "family_d2", "family_d3",
+              "proxy_gly_designed", "proxy_pro_designed", "proxy_flex_run_designed",
+              "proxy_gly_whole_chain", "proxy_pro_whole_chain", "proxy_flex_run_whole_chain",
               "epitope_hotspots_within_4.5A", "epitope_footprint_residues",
               "epitope_footprint_in_trastuzumab_pct", "sabdab2_cdr3_identity",
               "sabdab2_cdr123_identity", "sabdab2_nearest_cdr3", "novelty_scope",
@@ -198,6 +258,7 @@ def main() -> int:
                 f"{p['hydro_frac']:.2f}", f"{p['net_charge']:+d}",
                 "FLAG" if p["dev_flag"] == "yes" else "clean",
                 p["dev_reason"], p["family"], p["family_c3"],
+                "", "", "", "", "", "",
                 "", "", "", "", "", "", NOVELTY_SCOPE_REDESIGN,
                 p["selection"], p["rationale"], "",
             ])
@@ -205,7 +266,8 @@ def main() -> int:
             w.writerow([
                 j, "de_novo", d["cdr3"], d["design_id"], f"{d['min_ipae']:.4f}",
                 f"{d['iptm']:.3f}", f"{d['binder_plddt']:.2f}", "n/a", "n/a", "n/a",
-                "not assessed", "not assessed", "not assessed", "", "", "",
+                f"{d['hydro']:.2f}", f"{d['charge']:+d}", d["dev"], d["dev_detail"], "", "",
+                d["g_des"], d["p_des"], d["f_des"], d["g_all"], d["p_all"], d["f_all"],
                 d["hot"], d["fp"], f"{d['fp_pct']:.0f}", f"{d['id3']:.3f}",
                 f"{d['id123']:.3f}", d["nn3"], NOVELTY_SCOPE_DENOVO,
                 "de novo VHH, appended after the CDRH3 list; ordered by min_ipae",

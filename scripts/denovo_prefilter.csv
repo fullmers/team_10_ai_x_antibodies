@@ -1,0 +1,4 @@
+"# De novo VHH pre-filters. Motif definitions from developability.py; Gly/Pro/flex-run from stability_proxy.py (PROXY ONLY, not a Tm prediction). No parent comparison: the CDRH3 parent is a 10-mer in another framework."
+design,length,cys_total,cys_even,cys_in_designed_regions,motif,start,end,residues,location
+her2_vhh_denovo_rep117,120,2,True,0,none,,,,
+her2_vhh_denovo_rep106,120,2,True,0,N-x-S/T,50,52,NIT,designed region
