@@ -1,0 +1,21 @@
+label,cdrh3,mut_vs_tz,identity_%,min_dist,pass_docs,pass_strict,verdict
+her2_cdrh3_0,DLSLSDFSFD,9,10,4,yes,yes,PASS
+her2_cdrh3_1,DSPAAGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_2,WGPPYFYAMD,3,70,2,yes,no,"FAIL (identity 70%, dist 2)"
+her2_cdrh3_3,WASSSEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_4,YWSLHYYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_5,STSAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_6,STSAYGYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_7,STASVDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_8,DLSSYDRAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_9,WGSGSLYAFD,5,50,1,no,no,FAIL (dist 1)
+her2_cdrh3_10,TTPAVAYAHD,7,30,3,yes,yes,PASS
+her2_cdrh3_11,SNFAYGLAFD,8,20,5,yes,yes,PASS
+her2_cdrh3_12,DLSLSVYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_13,WGWSGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_14,WHSLHEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_15,STSAVDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_16,WASLYLYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_17,SLDGYYNYFD,9,10,5,yes,yes,PASS
+her2_cdrh3_18,STSSVGLAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_19,STASVGYAMD,6,40,4,yes,yes,PASS
