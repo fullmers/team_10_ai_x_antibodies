@@ -1,16 +1,18 @@
-# HER2 submission — ranked designs (CDRH3 redesigns 1-20, de novo VHHs 21-22)
+# HER2 submission — ranked designs (CDRH3 redesigns 1-18, de novo VHHs 19-20)
 
-Generated 2026-11-14 from `runs/her2-main` (RFD4-Proteina `her2-novel-2026-11-09`, 200 designs, seed 2; top 60 refolded with Boltz-2). Ranks 21-22 come from a separate de novo run (`runs/denovo`, `antibody-2026-10-30`, 150 designs, seed 4; top 30 refolded with Boltz-2).
+Generated 2026-11-14 from `runs/her2-main` (RFD4-Proteina `her2-novel-2026-11-09`, 200 designs, seed 2; top 60 refolded with Boltz-2). Ranks 19-20 come from a separate de novo run (`runs/denovo`, `antibody-2026-10-30`, 150 designs, seed 4; top 30 refolded with Boltz-2).
 
 Parent CDRH3: `WGGDGFYAMD` (trastuzumab).
+
+> **Submitted file: `submission/team10.csv`** (20 rows: 18 paired CDRH3 designs + 2 VHHs). The submission limit is 20, so two developability-flagged designs were cut from the original 22-row list after ranking: `DLSLSEHAFD` (her2_cdrh3_35, was rank 15, charge -3) and `YMNLYYYAFD` (her2_cdrh3_149, was rank 18, 5+ hydrophobic run, hydrophobic 80%). Ranks below were renumbered; ranks 1-14 are unchanged. `scripts/build_submission.py` still generates the original 22-row list and was not changed.
 
 ## How this list was built
 
 **Slots 1-4 were chosen to differ by construction, not by score.** One representative per sequence family was taken, rather than the top four by `min_ipae`, so that a failure of one binding mode does not take the whole submission with it.
 
-**Slots 5-20** are the remaining strict-novelty-passing refolded designs ranked on `min_ipae` with `iptm` as tie-break, skipping exact duplicates of loops already listed.
+**Slots 5-18** are the remaining strict-novelty-passing refolded designs ranked on `min_ipae` with `iptm` as tie-break, skipping exact duplicates of loops already listed.
 
-**Ranks 1-20** pass the **strict** novelty reading (identity < 70% to trastuzumab AND minimum Hamming distance > 2 to all 525,042 length-10 CDRH3s in the Chinery FACS + SPR screen).
+**Ranks 1-18** pass the **strict** novelty reading (identity < 70% to trastuzumab AND minimum Hamming distance > 2 to all 525,042 length-10 CDRH3s in the Chinery FACS + SPR screen).
 
 ## Sequence families
 
@@ -26,18 +28,18 @@ So **slots 1 and 3 are same-family at every cutoff tested**, which weakens the o
 
 **Slots 2 and 4 are a deliberate paired bet on the same family**, and their order is arbitrary: `TRAAVGYAHD` (0.3234) and `WSSAVGYAHD` (0.3238) are separated by 0.0004 in `min_ipae`, far below any meaningful resolution of the metric.
 
-## De novo track (ranks 21-22)
+## De novo track (ranks 19-20)
 
-Two de novo VHH binders to HER2 domain IV, appended after the CDRH3 list and marked `track=de_novo` in
-the CSV. They are numbered by `min_ipae`; the position after rank 20 is a bookkeeping choice, **not a
+Two de novo VHH binders to HER2 domain IV, appended after the CDRH3 list (rank 18) and marked `track=de_novo` in
+the CSV. They are numbered by `min_ipae`; the position after rank 18 is a bookkeeping choice, **not a
 claim that they are worse than the redesigns**. The two tracks were scored in different regimes (a
 one-loop redesign inside a known trastuzumab/HER2 complex vs a new binder with an unpinned pose), so
 `min_ipae` is not comparable across them (0.31-0.38 A vs 1.6-1.7 A).
 
 | # | design | CDR3 | min_ipae | iptm | b_pLDDT | hotspots <=4.5 A | footprint on HER2 | footprint inside trastuzumab epitope | CDR3 identity to nearest SAbDab2-subset antibody | CDR1+2+3 identity |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 21 | her2_vhh_denovo_rep117 | `AARPSSRSGSDDWDY` | 1.638 | 0.887 | 94.64 | 3/4 | 14 (of which 11 in trastuzumab epitope) | 79% | 0.647 - AARRDYSLSSSSDDFDY (SD-H, 6XXO) | 0.645 |
-| 22 | her2_vhh_denovo_rep106 | `AARPWWKAGSDAYDY` | 1.701 | 0.888 | 97.62 | 3/4 | 15 (of which 11 in trastuzumab epitope) | 73% | 0.667 - AARPQGDYVTAHYDY (SD-H, 3K7U) | 0.656 |
+| 19 | her2_vhh_denovo_rep117 | `AARPSSRSGSDDWDY` | 1.638 | 0.887 | 94.64 | 3/4 | 14 (of which 11 in trastuzumab epitope) | 79% | 0.647 - AARRDYSLSSSSDDFDY (SD-H, 6XXO) | 0.645 |
+| 20 | her2_vhh_denovo_rep106 | `AARPWWKAGSDAYDY` | 1.701 | 0.888 | 97.62 | 3/4 | 15 (of which 11 in trastuzumab epitope) | 73% | 0.667 - AARPQGDYVTAHYDY (SD-H, 3K7U) | 0.656 |
 
 **Novelty is checked against a 5,301-antibody subset only, not full SAbDab.** The reference is the SAbDab2
 ML dataset (15,641 structures, 8,641 PDB entries, 5,301 unique antibodies; Zenodo 20083995), a curated
@@ -79,7 +81,7 @@ Hydrophobic fraction and charge are over the designed residues. The Gly/Pro/flex
 (`SSSGS`).
 
 `her2_vhh_denovo_rep106` carries an **N-x-S/T glycosylation sequon** (`NIT`, chain H 50-52, in the CDR2
-region). It stays at rank 22 with the flag carried in the CSV (`developability=FLAG`). Whether the sequon
+region). It stays at rank 20 with the flag carried in the CSV (`developability=FLAG`). Whether the sequon
 matters depends on the expression system: if the assay is cell-free without glycosylation machinery it is not a
 real liability, but **this could not be verified** — the Adaptyv document in the task materials contains no
 expression protocol, and the word 'glycosylation' appears nowhere in the documentation set.
@@ -90,6 +92,8 @@ expression protocol, and the word 'glycosylation' appears nowhere in the documen
 
 `WGPPGFYAFD` (her2_cdrh3_70) scored 5th overall by `min_ipae` (0.3141) across all 60 refolded designs but is **excluded**: it is present verbatim in the FACS screen, labelled `high`. It is a known binder, not a novel design. Its rediscovery is a sanity check on the model, not a candidate.
 
+`DLSLSEHAFD` (her2_cdrh3_35) and `YMNLYYYAFD` (her2_cdrh3_149) were ranked 15 and 18 but **cut to fit the 20-design limit**: both carry developability flags (charge -3 vs -2; 5+ hydrophobic run with 80% hydrophobic fraction). They still pass strict novelty.
+
 ## Caveats
 
 - `pass` is empty for every row in `refold_metrics.csv` (`pass_note`: missing `refolded_target_aligned_binder_rmsd.rmsd`), so the module's own automated verdict is unavailable for all 60. Ranking uses `min_ipae` directly.
@@ -98,9 +102,9 @@ expression protocol, and the word 'glycosylation' appears nowhere in the documen
 
 - One diffusion sample per design (`--num-diffusion-samples 1`, seed 42). No replicate spread.
 
-- Ranks 21-22 are de novo VHHs; their novelty is verified only against the 5,301-antibody SAbDab2 ML subset (see above).
+- Ranks 19-20 are de novo VHHs; their novelty is verified only against the 5,301-antibody SAbDab2 ML subset (see above).
 
-- The Gly/Pro/flexible-run stability proxy for ranks 21-22 is in the CSV (`proxy_*` columns); for ranks 1-20 it is in `scripts/stability_proxy.csv`. It is a proxy only, not a Tm prediction.
+- The Gly/Pro/flexible-run stability proxy for ranks 19-20 is in the CSV (`proxy_*` columns); for ranks 1-18 it is in `scripts/stability_proxy.csv`. It is a proxy only, not a Tm prediction.
 
 - Boltz-2 `iptm` here is not comparable to the Chai-1 calibration in `scripts/calibration.csv`; ipTM does not transfer across predictors.
 
@@ -122,18 +126,16 @@ expression protocol, and the word 'glycosylation' appears nowhere in the documen
 | 12 | DLSSSDFAFD | her2_cdrh3_147 | 0.3650 | 0.882 | 98.06 | 4 | 20 | 8 | 0.40 | -3 | FLAG |
 | 13 | SLSLSNFAFD | her2_cdrh3_9 | 0.3663 | 0.836 | 98.60 | 4 | 20 | 8 | 0.50 | -1 | clean |
 | 14 | WRSLSEYYFD | her2_cdrh3_148 | 0.3692 | 0.877 | 97.18 | 3 | 30 | 7 | 0.50 | -1 | clean |
-| 15 | DLSLSEHAFD | her2_cdrh3_35 | 0.3700 | 0.838 | 98.18 | 4 | 20 | 8 | 0.40 | -3 | FLAG |
-| 16 | DLSLHNHAFD | her2_cdrh3_181 | 0.3726 | 0.878 | 97.41 | 4 | 20 | 8 | 0.40 | -2 | clean |
-| 17 | WASLHDYYHD | her2_cdrh3_193 | 0.3735 | 0.893 | 95.63 | 3 | 30 | 7 | 0.50 | -2 | clean |
-| 18 | YMNLYYYAFD | her2_cdrh3_149 | 0.3783 | 0.877 | 96.05 | 3 | 30 | 7 | 0.80 | -1 | FLAG |
-| 19 | YASSSDYYFD | her2_cdrh3_114 | 0.3785 | 0.877 | 97.20 | 3 | 20 | 8 | 0.50 | -2 | clean |
-| 20 | WKSTTQYYFD | her2_cdrh3_22 | 0.3839 | 0.875 | 96.85 | 4 | 30 | 7 | 0.40 | +0 | clean |
-| 21 | `AARPSSRSGSDDWDY` | her2_vhh_denovo_rep117 | 1.6377 | 0.887 | 94.64 | n/a | n/a | n/a | 0.30* | -1* | clean |
-| 22 | `AARPWWKAGSDAYDY` | her2_vhh_denovo_rep106 | 1.7012 | 0.888 | 97.62 | n/a | n/a | n/a | 0.43* | +0* | FLAG |
+| 15 | DLSLHNHAFD | her2_cdrh3_181 | 0.3726 | 0.878 | 97.41 | 4 | 20 | 8 | 0.40 | -2 | clean |
+| 16 | WASLHDYYHD | her2_cdrh3_193 | 0.3735 | 0.893 | 95.63 | 3 | 30 | 7 | 0.50 | -2 | clean |
+| 17 | YASSSDYYFD | her2_cdrh3_114 | 0.3785 | 0.877 | 97.20 | 3 | 20 | 8 | 0.50 | -2 | clean |
+| 18 | WKSTTQYYFD | her2_cdrh3_22 | 0.3839 | 0.875 | 96.85 | 4 | 30 | 7 | 0.40 | +0 | clean |
+| 19 | `AARPSSRSGSDDWDY` | her2_vhh_denovo_rep117 | 1.6377 | 0.887 | 94.64 | n/a | n/a | n/a | 0.30* | -1* | clean |
+| 20 | `AARPWWKAGSDAYDY` | her2_vhh_denovo_rep106 | 1.7012 | 0.888 | 97.62 | n/a | n/a | n/a | 0.43* | +0* | FLAG |
 
-Ranks 21-22 are `track=de_novo` (CDR3 shown is the VHH CDR3; see the de novo section for their separate metrics).
+Ranks 19-20 are `track=de_novo` (CDR3 shown is the VHH CDR3; see the de novo section for their separate metrics).
 
-\* De novo rows: hydrophobic fraction and net charge are computed over the 37 designed residues of the VHH, not a 10-residue CDRH3 loop, so they are not comparable with ranks 1-20. The CDRH3-track columns `dist`, `id %` and `mut` do not apply (`n/a`).
+\* De novo rows: hydrophobic fraction and net charge are computed over the 37 designed residues of the VHH, not a 10-residue CDRH3 loop, so they are not comparable with ranks 1-18. The CDRH3-track columns `dist`, `id %` and `mut` do not apply (`n/a`).
 
 ## Rationales
 
@@ -157,16 +159,12 @@ Ranks 21-22 are `track=de_novo` (CDR3 shown is the VHH CDR3; see the de novo sec
    - Developability flag: charge -3 vs -2 (further from neutral)
 13. `SLSLSNFAFD` (her2_cdrh3_9) — Rank by score among the remaining strict-novelty designs; family 3 (d<=2).
 14. `WRSLSEYYFD` (her2_cdrh3_148) — Rank by score among the remaining strict-novelty designs; family 9 (d<=2).
-15. `DLSLSEHAFD` (her2_cdrh3_35) — Rank by score among the remaining strict-novelty designs; family 3 (d<=2). DEVELOPABILITY FLAG: charge -3 vs -2 (further from neutral).
-   - Developability flag: charge -3 vs -2 (further from neutral)
-16. `DLSLHNHAFD` (her2_cdrh3_181) — Rank by score among the remaining strict-novelty designs; family 3 (d<=2).
-17. `WASLHDYYHD` (her2_cdrh3_193) — Rank by score among the remaining strict-novelty designs; family 8 (d<=2).
-18. `YMNLYYYAFD` (her2_cdrh3_149) — Rank by score among the remaining strict-novelty designs; family 13 (d<=2). DEVELOPABILITY FLAG: 5+ hydrophobic run +1; hydrophobic 80% vs 50%.
-   - Developability flag: 5+ hydrophobic run +1; hydrophobic 80% vs 50%
-19. `YASSSDYYFD` (her2_cdrh3_114) — Rank by score among the remaining strict-novelty designs; family 12 (d<=2).
-20. `WKSTTQYYFD` (her2_cdrh3_22) — Rank by score among the remaining strict-novelty designs; family 10 (d<=2).
-21. `AARPSSRSGSDDWDY` (her2_vhh_denovo_rep117, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 79% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track. Hard filters pass (2 Cys = the framework pair, 120 aa). Designed-residue hydrophobic fraction 0.30, net charge -1; Gly/Pro in designed residues 4/1 (stability proxy only, not a Tm prediction). Motif screen: no hits.
-22. `AARPWWKAGSDAYDY` (her2_vhh_denovo_rep106, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 73% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track. Hard filters pass (2 Cys = the framework pair, 120 aa). Designed-residue hydrophobic fraction 0.43, net charge +0; Gly/Pro in designed residues 4/1 (stability proxy only, not a Tm prediction). DEVELOPABILITY FLAG: N-x-S/T +1 (NIT, chain H 50-52, CDR2 region).
+15. `DLSLHNHAFD` (her2_cdrh3_181) — Rank by score among the remaining strict-novelty designs; family 3 (d<=2).
+16. `WASLHDYYHD` (her2_cdrh3_193) — Rank by score among the remaining strict-novelty designs; family 8 (d<=2).
+17. `YASSSDYYFD` (her2_cdrh3_114) — Rank by score among the remaining strict-novelty designs; family 12 (d<=2).
+18. `WKSTTQYYFD` (her2_cdrh3_22) — Rank by score among the remaining strict-novelty designs; family 10 (d<=2).
+19. `AARPSSRSGSDDWDY` (her2_vhh_denovo_rep117, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 79% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track. Hard filters pass (2 Cys = the framework pair, 120 aa). Designed-residue hydrophobic fraction 0.30, net charge -1; Gly/Pro in designed residues 4/1 (stability proxy only, not a Tm prediction). Motif screen: no hits.
+20. `AARPWWKAGSDAYDY` (her2_vhh_denovo_rep106, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 73% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track. Hard filters pass (2 Cys = the framework pair, 120 aa). Designed-residue hydrophobic fraction 0.43, net charge +0; Gly/Pro in designed residues 4/1 (stability proxy only, not a Tm prediction). DEVELOPABILITY FLAG: N-x-S/T +1 (NIT, chain H 50-52, CDR2 region).
 
 ---
 Full columns in [`ranked_designs.csv`](ranked_designs.csv).
