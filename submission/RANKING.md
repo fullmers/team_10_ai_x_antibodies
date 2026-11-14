@@ -1,6 +1,6 @@
-# HER2 CDRH3 submission — ranked designs
+# HER2 submission — ranked designs (CDRH3 redesigns 1-20, de novo VHHs 21-22)
 
-Generated 2026-11-14 from `runs/her2-main` (RFD4-Proteina `her2-novel-2026-11-09`, 200 designs, seed 2; top 60 refolded with Boltz-2).
+Generated 2026-11-14 from `runs/her2-main` (RFD4-Proteina `her2-novel-2026-11-09`, 200 designs, seed 2; top 60 refolded with Boltz-2). Ranks 21-22 come from a separate de novo run (`runs/denovo`, `antibody-2026-10-30`, 150 designs, seed 4; top 30 refolded with Boltz-2).
 
 Parent CDRH3: `WGGDGFYAMD` (trastuzumab).
 
@@ -10,7 +10,7 @@ Parent CDRH3: `WGGDGFYAMD` (trastuzumab).
 
 **Slots 5-20** are the remaining strict-novelty-passing refolded designs ranked on `min_ipae` with `iptm` as tie-break, skipping exact duplicates of loops already listed.
 
-All 20 pass the **strict** novelty reading (identity < 70% to trastuzumab AND minimum Hamming distance > 2 to all 525,042 length-10 CDRH3s in the Chinery FACS + SPR screen).
+**Ranks 1-20** pass the **strict** novelty reading (identity < 70% to trastuzumab AND minimum Hamming distance > 2 to all 525,042 length-10 CDRH3s in the Chinery FACS + SPR screen).
 
 ## Sequence families
 
@@ -26,6 +26,40 @@ So **slots 1 and 3 are same-family at every cutoff tested**, which weakens the o
 
 **Slots 2 and 4 are a deliberate paired bet on the same family**, and their order is arbitrary: `TRAAVGYAHD` (0.3234) and `WSSAVGYAHD` (0.3238) are separated by 0.0004 in `min_ipae`, far below any meaningful resolution of the metric.
 
+## De novo track (ranks 21-22)
+
+Two de novo VHH binders to HER2 domain IV, appended after the CDRH3 list and marked `track=de_novo` in
+the CSV. They are numbered by `min_ipae`; the position after rank 20 is a bookkeeping choice, **not a
+claim that they are worse than the redesigns**. The two tracks were scored in different regimes (a
+one-loop redesign inside a known trastuzumab/HER2 complex vs a new binder with an unpinned pose), so
+`min_ipae` is not comparable across them (0.31-0.38 A vs 1.6-1.7 A).
+
+| # | design | CDR3 | min_ipae | iptm | b_pLDDT | hotspots <=4.5 A | footprint on HER2 | footprint inside trastuzumab epitope | CDR3 identity to nearest SAbDab2-subset antibody | CDR1+2+3 identity |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 21 | her2_vhh_denovo_rep117 | `AARPSSRSGSDDWDY` | 1.638 | 0.887 | 94.64 | 3/4 | 14 (of which 11 in trastuzumab epitope) | 79% | 0.647 - AARRDYSLSSSSDDFDY (SD-H, 6XXO) | 0.645 |
+| 22 | her2_vhh_denovo_rep106 | `AARPWWKAGSDAYDY` | 1.701 | 0.888 | 97.62 | 3/4 | 15 (of which 11 in trastuzumab epitope) | 73% | 0.667 - AARPQGDYVTAHYDY (SD-H, 3K7U) | 0.656 |
+
+**Novelty is checked against a 5,301-antibody subset only, not full SAbDab.** The reference is the SAbDab2
+ML dataset (15,641 structures, 8,641 PDB entries, 5,301 unique antibodies; Zenodo 20083995), a curated
+subset of SAbDab2 (21,237 distinct instances) and not OAS or any other collection. Both designs have a
+best CDR identity under 70% (CDR3 0.647 and 0.667), measured on CDRs because the fixed caplacizumab
+framework makes up 65-71% of every design. The check supports "neither is a near copy of a CDR3 in
+that subset" (nothing in the 30 refolded designs exceeded 0.77). It does **not** show they are more
+distinct than random: shuffling each CDR3's middle (ends kept) gives the same median best-match
+identity, 0.61, as the designs. The CDR1 and CDR3 boundaries were validated against the database
+(85% and 95% agreement); CDR2 boundaries are inferred, so the CDR1+2+3 figure is softer.
+
+**Epitope.** In the refolded Boltz-2 poses 3 of 4 hotspot atoms are within 4.5 A of the VHH for both, and
+73-79% of the HER2 footprint lies inside trastuzumab's epitope (19 residues in 1N8Z). Single sample per
+design; the input is a domain-IV fragment (HER2 489-607), so this says only that the prediction places
+the VHH on that epitope, not that it binds.
+
+**Other limits.** `pass` is empty for both (missing `refolded_target_aligned_binder_rmsd`); the HER2 pose was
+not pinned in the design input (relative coordinate groups were the only convention that validated), so the
+hotspots were the only steer. Only the top 30 of 150 designs were refolded. Developability, stability and
+the Chinery screen were not run on these (the Chinery screen covers trastuzumab CDRH3 variants and does not
+apply). Full VHH sequences are in the CSV (`vhh_sequence`).
+
 ## Excluded by deliberate choice
 
 `SLYVNNYSYD` (her2_cdrh3_39) scores 5th on `min_ipae` (0.3288) and has a novelty distance of 4, but carries an **N-x-S/T glycosylation sequon** (`NYS`). It is kept at slot 5 rather than promoted into the top four. Whether the sequon matters depends on the expression system: if the assay is cell-free without glycosylation machinery it is not a real liability, but **this could not be verified** — the Adaptyv document in the task materials contains no expression protocol, and the word 'glycosylation' appears nowhere in the documentation set.
@@ -39,6 +73,8 @@ So **slots 1 and 3 are same-family at every cutoff tested**, which weakens the o
 - Developability is a sequence-motif prefilter only, scanned in framework context (`SR[loop]YW`), not an assessment. See `scripts/developability.py`.
 
 - One diffusion sample per design (`--num-diffusion-samples 1`, seed 42). No replicate spread.
+
+- Ranks 21-22 are de novo VHHs; their novelty is verified only against the 5,301-antibody SAbDab2 ML subset (see above).
 
 - Boltz-2 `iptm` here is not comparable to the Chai-1 calibration in `scripts/calibration.csv`; ipTM does not transfer across predictors.
 
@@ -66,6 +102,10 @@ So **slots 1 and 3 are same-family at every cutoff tested**, which weakens the o
 | 18 | YMNLYYYAFD | her2_cdrh3_149 | 0.3783 | 0.877 | 96.05 | 3 | 30 | 7 | 0.80 | -1 | FLAG |
 | 19 | YASSSDYYFD | her2_cdrh3_114 | 0.3785 | 0.877 | 97.20 | 3 | 20 | 8 | 0.50 | -2 | clean |
 | 20 | WKSTTQYYFD | her2_cdrh3_22 | 0.3839 | 0.875 | 96.85 | 4 | 30 | 7 | 0.40 | +0 | clean |
+| 21 | `AARPSSRSGSDDWDY` | her2_vhh_denovo_rep117 | 1.6377 | 0.887 | 94.64 | n/a | n/a | n/a | n/a | n/a | not assessed |
+| 22 | `AARPWWKAGSDAYDY` | her2_vhh_denovo_rep106 | 1.7012 | 0.888 | 97.62 | n/a | n/a | n/a | n/a | n/a | not assessed |
+
+Ranks 21-22 are `track=de_novo` (CDR3 shown is the VHH CDR3; see the de novo section for their separate metrics).
 
 ## Rationales
 
@@ -97,6 +137,8 @@ So **slots 1 and 3 are same-family at every cutoff tested**, which weakens the o
    - Developability flag: 5+ hydrophobic run +1; hydrophobic 80% vs 50%
 19. `YASSSDYYFD` (her2_cdrh3_114) — Rank by score among the remaining strict-novelty designs; family 12 (d<=2).
 20. `WKSTTQYYFD` (her2_cdrh3_22) — Rank by score among the remaining strict-novelty designs; family 10 (d<=2).
+21. `AARPSSRSGSDDWDY` (her2_vhh_denovo_rep117, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 79% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track.
+22. `AARPWWKAGSDAYDY` (her2_vhh_denovo_rep106, de novo) — De novo VHH on the caplacizumab framework against HER2 domain IV, hotspots from the trastuzumab epitope. In the refolded Boltz-2 pose it sits on that epitope (3/4 hotspot atoms within 4.5 A, 73% of its footprint inside trastuzumab's). Passes <70% CDR identity against the SAbDab2 ML subset only; the nearest-neighbour identity is at chance level (shuffled-loop control median 0.61). `pass` is empty (missing pose-RMSD evidence); scores are single-sample and not comparable with the CDRH3 track.
 
 ---
 Full columns in [`ranked_designs.csv`](ranked_designs.csv).
