@@ -1,0 +1,10 @@
+{
+ "label": "fold-d03_DVGPSLWALDY_mut7",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d03_DVGPSLWALDY_mut7",
+ "kind": "inline",
+ "submitted_at": 1794656479.604949,
+ "operation_id": "op-94ec0da8eb16e436",
+ "state": "queued"
+}

@@ -1,0 +1,10 @@
+{
+ "label": "fold-d13_DAGQGEYAMNY_mut5",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d13_DAGQGEYAMNY_mut5",
+ "kind": "inline",
+ "submitted_at": 1794656494.185556,
+ "operation_id": "op-4d588c71271c37d6",
+ "state": "queued"
+}

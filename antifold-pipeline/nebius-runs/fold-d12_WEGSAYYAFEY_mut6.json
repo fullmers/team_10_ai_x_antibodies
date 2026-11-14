@@ -1,0 +1,10 @@
+{
+ "label": "fold-d12_WEGSAYYAFEY_mut6",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d12_WEGSAYYAFEY_mut6",
+ "kind": "inline",
+ "submitted_at": 1794656493.433153,
+ "operation_id": "op-b8befb9e08115554",
+ "state": "queued"
+}

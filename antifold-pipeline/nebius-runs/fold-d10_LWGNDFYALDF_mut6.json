@@ -1,0 +1,10 @@
+{
+ "label": "fold-d10_LWGNDFYALDF_mut6",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d10_LWGNDFYALDF_mut6",
+ "kind": "inline",
+ "submitted_at": 1794656490.599704,
+ "operation_id": "op-041eebda8f4a6bb1",
+ "state": "queued"
+}

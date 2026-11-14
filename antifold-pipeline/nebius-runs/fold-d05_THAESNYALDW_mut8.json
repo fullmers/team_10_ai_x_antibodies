@@ -1,0 +1,10 @@
+{
+ "label": "fold-d05_THAESNYALDW_mut8",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d05_THAESNYALDW_mut8",
+ "kind": "inline",
+ "submitted_at": 1794656481.157727,
+ "operation_id": "op-76b37abdf679e1b0",
+ "state": "queued"
+}

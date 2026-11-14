@@ -1,0 +1,10 @@
+{
+ "label": "fold-wt_trastuzumab_VH",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-wt_trastuzumab_VH",
+ "kind": "inline",
+ "submitted_at": 1794656472.454924,
+ "operation_id": "op-1d3e66ff07c562a8",
+ "state": "queued"
+}

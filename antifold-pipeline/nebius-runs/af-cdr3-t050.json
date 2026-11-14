@@ -1,0 +1,11 @@
+{
+ "label": "af-cdr3-t050",
+ "model": "antifold",
+ "tool": "submit_antifold",
+ "key": "oslo-antifold-af-cdr3-t050",
+ "kind": "file",
+ "operation": "inverse-fold",
+ "submitted_at": 1794650398.533417,
+ "operation_id": "op-6458148746c3012a",
+ "state": "queued"
+}

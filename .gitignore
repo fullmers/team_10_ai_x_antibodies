@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+*.private.json
+credentials*
+agent/
+*.pem
+scores/
+results/

@@ -1,0 +1,11 @@
+{
+ "label": "msa-vh",
+ "model": "msa-search-pdb70",
+ "tool": "msa_search_native",
+ "key": "oslo-msa-search-pdb70-msa-vh",
+ "kind": "inline",
+ "submitted_at": 1794656057.227283,
+ "operation_id": "op-1392ae2029b38681",
+ "state": "succeeded",
+ "total_seconds": 32
+}

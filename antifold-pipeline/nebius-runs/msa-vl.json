@@ -1,0 +1,10 @@
+{
+ "label": "msa-vl",
+ "model": "msa-search-pdb70",
+ "tool": "msa_search_native",
+ "key": "oslo-msa-search-pdb70-msa-vl",
+ "kind": "inline",
+ "submitted_at": 1794656185.5690591,
+ "operation_id": "op-607ae1f84ec2f21f",
+ "state": "queued"
+}

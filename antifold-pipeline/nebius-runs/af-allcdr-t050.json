@@ -1,0 +1,11 @@
+{
+ "label": "af-allcdr-t050",
+ "model": "antifold",
+ "tool": "submit_antifold",
+ "key": "oslo-antifold-af-allcdr-t050",
+ "kind": "file",
+ "operation": "inverse-fold",
+ "submitted_at": 1794650425.383785,
+ "operation_id": "op-0e52c3f50f82ae46",
+ "state": "queued"
+}

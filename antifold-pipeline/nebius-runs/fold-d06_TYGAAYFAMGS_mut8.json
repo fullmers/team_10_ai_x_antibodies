@@ -1,0 +1,10 @@
+{
+ "label": "fold-d06_TYGAAYFAMGS_mut8",
+ "model": "boltz2",
+ "tool": "boltz2_predict_native",
+ "key": "oslo-boltz2-fold-d06_TYGAAYFAMGS_mut8",
+ "kind": "inline",
+ "submitted_at": 1794656482.9197388,
+ "operation_id": "op-c7ab4e4f02d7b8bb",
+ "state": "queued"
+}

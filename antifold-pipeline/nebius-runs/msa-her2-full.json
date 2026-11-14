@@ -1,0 +1,10 @@
+{
+ "label": "msa-her2-full",
+ "model": "msa-search-pdb70",
+ "tool": "msa_search_native",
+ "key": "oslo-msa-search-pdb70-msa-her2-full",
+ "kind": "inline",
+ "submitted_at": 1794656198.699187,
+ "operation_id": "op-dd2b0afce92e9587",
+ "state": "queued"
+}
