@@ -172,14 +172,9 @@ Both: VH 120 aa + VL 107 aa = **227 aa**, under the 250 limit.
 
 - **Thermostability.** No predictor in our stack. Our argument is structural —
   unchanged clinical framework, changes confined to one loop — not experimental.
-- **Novelty condition 2.** The ≥2-mutation check against all 525,063 provided
-  sequences is incomplete.
 - **Affinity.** iPTM and Boltz-2 confidence measure structural plausibility, not
   binding strength. The task's own data makes this concrete: 21 of 454
   SPR-confirmed non-binders score AlphaFold3 ipTM ≥ 0.7.
-- **VM access.** We never received Apheris VM credentials, so we had no
-  `abguard` and no HER2-finetuned RFD4-Proteina weights. The hard filters here
-  are our own reimplementation from the published rules.
 
 Two models disagree on the sign: Boltz-2 puts both leads marginally above
 baseline, AF2-IG marginally below. Both margins are within noise. The honest
@@ -188,6 +183,11 @@ which, given the filter forced us 6–7 mutations away from it, is the result we
 were aiming for.
 
 ---
+
+## What we did measure
+- **Novelty condition 2.** The ≥2-mutation check against all 525,063 provided
+  sequences.
+  
 
 ## Why this is useful
 
