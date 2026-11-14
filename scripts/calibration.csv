@@ -1,0 +1,14 @@
+# MODEL: Chai-1. Our HER2 designs were scored with Boltz-2. ipTM does not transfer across predictors -- treat these thresholds as indicative only.
+"# source: chai1_all_per_replica_confidence_metrics.zip; real pairs=121, shuffled pairs=14601, replica files=735172, skipped=0"
+population,unit,n,mean,median,p75,p90,p95,p99,max,frac_above_0.7,frac_above_0.8,frac_above_0.9
+shuffled (non-binder),replica sample,729122,0.1924,0.1704,0.2160,0.2824,0.3517,0.5607,0.9375,0.0013,0.0001,0.0001
+shuffled (non-binder),pair mean over replicas,14601,0.1925,0.1720,0.2163,0.2791,0.3451,0.5574,0.9222,0.0013,0.0001,0.0001
+shuffled (non-binder),pair max over replicas,14601,0.2085,0.1866,0.2377,0.3094,0.3830,0.5780,0.9375,0.0018,0.0001,0.0001
+real (binder),replica sample,6050,0.2478,0.1840,0.2463,0.5858,0.7124,0.7877,0.8142,0.0567,0.0050,0.0000
+real (binder),pair mean over replicas,121,0.2478,0.1869,0.2455,0.5764,0.7069,0.7853,0.8033,0.0579,0.0083,0.0000
+real (binder),pair max over replicas,121,0.2641,0.2064,0.2672,0.5980,0.7260,0.7889,0.8142,0.0661,0.0083,0.0000
+
+threshold excluding 95% of shuffled pairs (unit = pair mean),0.3451
+threshold excluding 95% of shuffled replicas (unit = replica sample),0.3517
+threshold excluding 95% of shuffled pairs (unit = pair max),0.3830
+real pairs retained at the pair-mean 95% threshold,0.1405

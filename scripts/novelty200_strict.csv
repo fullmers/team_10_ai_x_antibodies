@@ -1,0 +1,201 @@
+label,cdrh3,mut_vs_tz,identity_%,min_dist,pass_docs,pass_strict,verdict
+her2_cdrh3_0,TTLAVGYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_1,SLSSSVYAFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_2,YASYYYYYYD,8,20,4,yes,yes,PASS
+her2_cdrh3_3,SLGSAPTAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_4,SLSLTVYAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_5,WASLSDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_6,YGPGSLLAMD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_7,SLSLSNYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_8,WGSSTFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_9,SLSLSNFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_10,STASVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_11,WGSPGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_12,DSPYLGSAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_13,YGLSTHGAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_14,WPDGVYYAHD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_15,YASLHEYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_16,SLSLSNFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_17,DLSSSDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_18,WASLYDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_19,WGSSSFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_20,WGPSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_21,SLSSSDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_22,WKSTTQYYFD,7,30,4,yes,yes,PASS
+her2_cdrh3_23,WGPSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_24,WASLTEYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_25,WASLFDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_26,YGSGSNYAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_27,DLFFPYYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_28,WGSPGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_29,STAAVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_30,DILSGYAIFD,8,20,4,yes,yes,PASS
+her2_cdrh3_31,WSSAVGYAHD,6,40,3,yes,yes,PASS
+her2_cdrh3_32,YVPSSVSAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_33,WSSAVGYAMD,5,50,3,yes,yes,PASS
+her2_cdrh3_34,WTSAVDYAMD,5,50,2,yes,no,FAIL (dist 2)
+her2_cdrh3_35,DLSLSEHAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_36,STAAVGYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_37,TTAAVGYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_38,STSAVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_39,SLYVNNYSYD,8,20,4,yes,yes,PASS
+her2_cdrh3_40,STSAYDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_41,SLSLSDFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_42,SSYSVYGAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_43,SLSLSDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_44,WGSSHFYAMD,3,70,2,yes,no,"FAIL (identity 70%, dist 2)"
+her2_cdrh3_45,DASYYYYYFD,8,20,4,yes,yes,PASS
+her2_cdrh3_46,WGSSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_47,DLSLSDHAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_48,WASLYDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_49,WASLAEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_50,HMPGSSLAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_51,EPVYGVFAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_52,SASLSDYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_53,SGSGSNRYFD,8,20,4,yes,yes,PASS
+her2_cdrh3_54,SLGSSDSAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_55,WTSSAGYAHD,6,40,3,yes,yes,PASS
+her2_cdrh3_56,WASLSEYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_57,DLSYYNHAFD,8,20,5,yes,yes,PASS
+her2_cdrh3_58,STSSVDYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_59,WASTSEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_60,WKSLYDYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_61,WASLYDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_62,SAVGSSRAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_63,YGSSSNLAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_64,WHSLYEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_65,WASLSEYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_66,WGPGTFYAHD,4,60,2,yes,no,FAIL (dist 2)
+her2_cdrh3_67,EVYSTYYAYD,7,30,4,yes,yes,PASS
+her2_cdrh3_68,DLSLSDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_69,WGPPGFYAFD,3,70,0,no,no,"FAIL (identity 70%, in data)"
+her2_cdrh3_70,WGPPGFYAFD,3,70,0,no,no,"FAIL (identity 70%, in data)"
+her2_cdrh3_71,WASLYDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_72,SFPHFSPSYS,10,0,5,yes,yes,PASS
+her2_cdrh3_73,DLSLSNYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_74,WMSGSDFAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_75,SYTVSSSYSS,10,0,5,yes,yes,PASS
+her2_cdrh3_76,STLAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_77,EGSGYLRAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_78,DLSLYDYSFD,8,20,3,yes,yes,PASS
+her2_cdrh3_79,WGPPGFYAFD,3,70,0,no,no,"FAIL (identity 70%, in data)"
+her2_cdrh3_80,WGPSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_81,YASLSEYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_82,STSAVDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_83,WGSSHFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_84,WASLSEYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_85,STSALDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_86,YGSSSLLAFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_87,WTPSVDYAHD,6,40,3,yes,yes,PASS
+her2_cdrh3_88,STAAYGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_89,STSSVSYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_90,SSYSVHGAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_91,WGPSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_92,SGLGYSYAFD,6,40,3,yes,yes,PASS
+her2_cdrh3_93,STSAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_94,WGSSYFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_95,WRSLFEYYFD,7,30,4,yes,yes,PASS
+her2_cdrh3_96,STSAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_97,WGSSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_98,TRAAVGYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_99,SSSYYGFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_100,STAAVSYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_101,TPVGPLYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_102,SLSLSLFVFD,9,10,4,yes,yes,PASS
+her2_cdrh3_103,YGSFNLYAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_104,WGPSGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_105,WGSPGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_106,STAAVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_107,WGSSGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_108,DLSLSNYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_109,STAAVGYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_110,STSSVAYAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_111,WGPPGFYAFD,3,70,0,no,no,"FAIL (identity 70%, in data)"
+her2_cdrh3_112,YGSGSNLAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_113,DMFFPYYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_114,YASSSDYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_115,STAAVGYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_116,YASNYDYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_117,WGPPGFYAFD,3,70,0,no,no,"FAIL (identity 70%, in data)"
+her2_cdrh3_118,STAAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_119,SLSLSDHSFD,9,10,4,yes,yes,PASS
+her2_cdrh3_120,YGSGSLYAFD,6,40,1,no,no,FAIL (dist 1)
+her2_cdrh3_121,YGSSSFLAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_122,WRLSGLYAFD,5,50,1,no,no,FAIL (dist 1)
+her2_cdrh3_123,SRSSVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_124,YVPHSYSAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_125,DMPGDDFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_126,DLSSSVYAYD,7,30,3,yes,yes,PASS
+her2_cdrh3_127,SYSSSSSSFS,10,0,5,yes,yes,PASS
+her2_cdrh3_128,DLSLSSAAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_129,YGSGTLYAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_130,WHSLSEYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_131,STAAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_132,SMPPPAHAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_133,WTSAVGYAHD,6,40,3,yes,yes,PASS
+her2_cdrh3_134,YMSLYYYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_135,SLSLSNYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_136,WHSLHEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_137,WDPTLYGAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_138,STSAVDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_139,DASLSAYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_140,SLSLSNYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_141,STSAVSYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_142,SLSFSVHAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_143,DASLSYYYFD,8,20,3,yes,yes,PASS
+her2_cdrh3_144,WAPLPVRAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_145,WGSSGFYAMD,2,80,1,no,no,"FAIL (identity 80%, dist 1)"
+her2_cdrh3_146,STAAVDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_147,DLSSSDFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_148,WRSLSEYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_149,YMNLYYYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_150,WGSSTFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_151,STAAVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_152,SLYPDFYVFD,7,30,3,yes,yes,PASS
+her2_cdrh3_153,WASSAIYAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_154,STSSVDYAMD,6,40,4,yes,yes,PASS
+her2_cdrh3_155,SLSLSSYAFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_156,WSSAAGYAHD,6,40,3,yes,yes,PASS
+her2_cdrh3_157,SMPGSDYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_158,WRSSVDYAFD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_159,SATYYYSYFS,10,0,5,yes,yes,PASS
+her2_cdrh3_160,WGSSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_161,TTAAVSYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_162,STASVGYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_163,EPLTSAWAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_164,EGALYGRAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_165,WSSSYGYAMD,5,50,3,yes,yes,PASS
+her2_cdrh3_166,STAASGYAFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_167,WSFAYDYAFD,6,40,3,yes,yes,PASS
+her2_cdrh3_168,WASLSDYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_169,WASLYYYYHD,7,30,3,yes,yes,PASS
+her2_cdrh3_170,SLSLYNFAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_171,WASLYYYYFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_172,SYGSAPSFFD,8,20,4,yes,yes,PASS
+her2_cdrh3_173,SLGYGDSAFD,6,40,3,yes,yes,PASS
+her2_cdrh3_174,YASSSNLAFD,8,20,3,yes,yes,PASS
+her2_cdrh3_175,WKSLYEYYFD,7,30,4,yes,yes,PASS
+her2_cdrh3_176,SLSLSSSVFD,9,10,4,yes,yes,PASS
+her2_cdrh3_177,TTASVGYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_178,YVPSSYYAFD,7,30,2,yes,no,FAIL (dist 2)
+her2_cdrh3_179,TTAAVDYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_180,ESFSYHGAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_181,DLSLHNHAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_182,SLSFTIRAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_183,DLSLFNYAFD,7,30,4,yes,yes,PASS
+her2_cdrh3_184,YMSLYYYEFD,8,20,3,yes,yes,PASS
+her2_cdrh3_185,SATLGDSVFD,8,20,3,yes,yes,PASS
+her2_cdrh3_186,WGSSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_187,TTAAVGYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_188,SLSSSSYAFD,7,30,3,yes,yes,PASS
+her2_cdrh3_189,TTPSVGYAHD,7,30,4,yes,yes,PASS
+her2_cdrh3_190,WRSLYDYYFD,7,30,3,yes,yes,PASS
+her2_cdrh3_191,SLSGYDAYFD,9,10,4,yes,yes,PASS
+her2_cdrh3_192,DLSSSDHAFD,8,20,4,yes,yes,PASS
+her2_cdrh3_193,WASLHDYYHD,7,30,3,yes,yes,PASS
+her2_cdrh3_194,WNSAYGYAMD,5,50,3,yes,yes,PASS
+her2_cdrh3_195,STSAVDYAMD,6,40,3,yes,yes,PASS
+her2_cdrh3_196,WGSSSFYAFD,4,60,1,no,no,FAIL (dist 1)
+her2_cdrh3_197,WGPSGFYAFD,3,70,1,no,no,"FAIL (identity 70%, dist 1)"
+her2_cdrh3_198,WSSSVGYAHD,6,40,2,yes,no,FAIL (dist 2)
+her2_cdrh3_199,STSSVGYAFD,7,30,4,yes,yes,PASS

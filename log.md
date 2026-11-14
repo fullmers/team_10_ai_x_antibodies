@@ -413,3 +413,79 @@ python3 scripts/novelty_check.py --loops designs200.txt --rule docs --csv novelt
 **172/200 pass the documented rule; 142/200 pass the strict rule.**
 Of the 52 unique refolded loops: 47 pass docs, 35 pass strict.
 CDRH3s extracted from chain B residues 99-108 of each `*_generated.cif`.
+
+## Refold rerun — 2026-11-14T12:56:38..13:04:14 (redundant, reproducibility check)
+
+The prepare/predict/score pipeline above had already been run (outputs on disk at
+12:55:51). I relaunched the identical pipeline at 12:56:38 without checking for
+existing outputs. `Scripts/run-her2.sh` begins each step with `rm -rf`, so the
+original `prepared/` and `boltz2/` were deleted and regenerated; `scored-boltz2/`
+was copied aside first and then overwritten.
+
+Outcome: the rerun reproduces the earlier scores exactly.
+`runs/her2-main/scored-boltz2/refold_metrics.csv` is byte-identical to the
+preserved copy (md5 `5d1677de1a1762bd6c4ff6a885ffa4b0`, 60 rows + header) —
+same image, same `--seeds 42`, same inputs.
+
+```bash
+TOPN=60 OUT=runs/her2-main bash Scripts/run-her2.sh prepare   # 12:56:38 -> 12:56:43
+TOPN=60 OUT=runs/her2-main bash Scripts/run-her2.sh predict   # 12:56:43 -> 13:04:06, 60/60
+TOPN=60 OUT=runs/her2-main bash Scripts/run-her2.sh score     # 13:04:06 -> 13:04:14
+```
+
+## CDRH3 extraction — all 200 main-run designs
+
+`scripts/extract_cdrh3.py` (new) reads the `_atom_site` loop of each
+`*_generated.cif` and emits chain B (auth), author residues 99-108, as
+`<loop>  <design_id>` — the input format `novelty_check.py --loops` takes.
+
+Validation: re-deriving the 20 pilot loops from `runs/her2/design` reproduces
+`scripts/designs20.txt` exactly.
+
+```bash
+python3 -I scripts/extract_cdrh3.py data/docs/runs/her2-main/design > scripts/designs200.txt
+```
+
+200 loops written, **164 distinct** — the sampler repeats some loops across
+replicates (e.g. `her2_cdrh3_7` and `her2_cdrh3_140` are both `SLSLSNYAFD`,
+and refold to identical metrics).
+
+## Novelty check — 200 main-run designs (`runs/her2-main`, seed 2)
+
+```bash
+python3 -I scripts/novelty_check.py --loops scripts/designs200.txt --rule docs   --csv scripts/novelty200_docs.csv
+python3 -I scripts/novelty_check.py --loops scripts/designs200.txt --rule strict --csv scripts/novelty200_strict.csv
+```
+
+Result: **172/200 pass the documented rule (86%), 142/200 pass the strict rule (71%).**
+Each pass took ~33 s against the 525,042 length-10 provided sequences.
+Full tables in `scripts/novelty200_docs.csv` and `scripts/novelty200_strict.csv`
+(both carry `pass_docs` and `pass_strict` columns; the files differ only in the
+`verdict` column).
+
+Restricted to the 60 designs that were refolded: **52 pass docs, 37 pass strict.**
+
+### Top 10 refolded by `min_ipae`, with novelty
+
+| design | CDRH3 | min_ipae | iptm | binder_plddt | min_dist | identity % | docs/strict |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| her2_cdrh3_140 | SLSLSNYAFD | 0.308 | 0.926 | 98.59 | 3 | 30 | pass/pass |
+| her2_cdrh3_7 | SLSLSNYAFD | 0.308 | 0.926 | 98.59 | 3 | 30 | pass/pass |
+| her2_cdrh3_11 | WGSPGFYAMD | 0.309 | 0.929 | 98.33 | 1 | 80 | fail/fail |
+| her2_cdrh3_28 | WGSPGFYAMD | 0.309 | 0.929 | 98.33 | 1 | 80 | fail/fail |
+| her2_cdrh3_70 | WGPPGFYAFD | 0.314 | 0.923 | 97.78 | 0 | 70 | fail/fail |
+| her2_cdrh3_98 | TRAAVGYAHD | 0.323 | 0.903 | 98.32 | 4 | 30 | pass/pass |
+| her2_cdrh3_31 | WSSAVGYAHD | 0.324 | 0.926 | 98.16 | 3 | 40 | pass/pass |
+| her2_cdrh3_39 | SLYVNNYSYD | 0.329 | 0.902 | 98.13 | 4 | 20 | pass/pass |
+| her2_cdrh3_1 | SLSSSVYAFD | 0.336 | 0.860 | 98.01 | 2 | 30 | pass/fail |
+| her2_cdrh3_130 | WHSLSEYYFD | 0.340 | 0.905 | 97.40 | 2 | 30 | pass/fail |
+
+Note `her2_cdrh3_70` (`WGPPGFYAFD`, min_dist 0) is already present in the provided
+screen data, and the two 80%-identity hits are near-parent loops — the structurally
+best-scoring designs skew toward the trastuzumab loop, so novelty has to be applied
+as a filter rather than read off the ranking. The best design passing both readings
+is **`her2_cdrh3_140` / `her2_cdrh3_7` — `SLSLSNYAFD`, min_ipae 0.308, iptm 0.926,
+3 mutations from anything in the screen, 30% identity to trastuzumab.**
+
+`pass` is empty for all 60 rows, as for the pilot (`pass_note`: missing
+`refolded_target_aligned_binder_rmsd.rmsd`).

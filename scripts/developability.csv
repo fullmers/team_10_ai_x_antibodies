@@ -1,0 +1,38 @@
+design,cdrh3,NG,DG,DP,sequon,free_C,hydro_run,KR_run,NG_loop_only,DG_loop_only,DP_loop_only,sequon_loop_only,free_C_loop_only,hydro_run_loop_only,KR_run_loop_only,longest_hydro_run_ctx,hydro_frac,net_charge,n_his,hydro_frac_vs_parent,net_charge_vs_parent,worse_than_parent,reasons
+her2_cdrh3_113,DMFFPYYAMD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0.70,-2,0,+0.20,+0,yes,hydrophobic 70% vs 50%
+her2_cdrh3_114,YASSSDYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,0,+0.00,+0,no,
+her2_cdrh3_134,YMSLYYYAFD,0,0,0,0,0,1,0,0,0,0,0,0,1,0,6,0.80,-1,0,+0.30,+1,yes,5+ hydrophobic run +1; hydrophobic 80% vs 50%
+her2_cdrh3_136,WHSLHEYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,2,+0.00,+0,no,
+her2_cdrh3_140,SLSLSNYAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-1,0,+0.00,+1,no,
+her2_cdrh3_147,DLSSSDFAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.40,-3,0,-0.10,-1,yes,charge -3 vs -2 (further from neutral)
+her2_cdrh3_148,WRSLSEYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-1,0,+0.00,+1,no,
+her2_cdrh3_149,YMNLYYYAFD,0,0,0,0,0,1,0,0,0,0,0,0,1,0,6,0.80,-1,0,+0.30,+1,yes,5+ hydrophobic run +1; hydrophobic 80% vs 50%
+her2_cdrh3_152,SLYPDFYVFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0.60,-2,0,+0.10,+0,yes,hydrophobic 60% vs 50%
+her2_cdrh3_154,STSSVDYAMD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.40,-2,0,-0.10,+0,no,
+her2_cdrh3_169,WASLYYYYHD,0,0,0,0,0,1,0,0,0,0,0,0,1,0,5,0.70,-1,1,+0.20,+1,yes,5+ hydrophobic run +1; hydrophobic 70% vs 50%
+her2_cdrh3_17,DLSSSDYAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.40,-3,0,-0.10,-1,yes,charge -3 vs -2 (further from neutral)
+her2_cdrh3_170,SLSLYNFAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.60,-1,0,+0.10,+1,yes,hydrophobic 60% vs 50%
+her2_cdrh3_175,WKSLYEYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.60,-1,0,+0.10,+1,yes,hydrophobic 60% vs 50%
+her2_cdrh3_179,TTAAVDYAHD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,1,+0.00,+0,no,
+her2_cdrh3_181,DLSLHNHAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.40,-2,2,-0.10,+0,no,
+her2_cdrh3_184,YMSLYYYEFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0.70,-2,0,+0.20,+0,yes,hydrophobic 70% vs 50%
+her2_cdrh3_192,DLSSSDHAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.30,-3,1,-0.20,-1,yes,charge -3 vs -2 (further from neutral)
+her2_cdrh3_193,WASLHDYYHD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.50,-2,2,+0.00,+0,no,
+her2_cdrh3_195,STSAVDYAMD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,0,+0.00,+0,no,
+her2_cdrh3_22,WKSTTQYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.40,0,0,-0.10,+2,no,
+her2_cdrh3_27,DLFFPYYAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0.70,-2,0,+0.20,+0,yes,hydrophobic 70% vs 50%
+her2_cdrh3_30,DILSGYAIFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0.60,-2,0,+0.10,+0,yes,hydrophobic 60% vs 50%
+her2_cdrh3_31,WSSAVGYAHD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.50,-1,1,+0.00,+1,no,
+her2_cdrh3_35,DLSLSEHAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.40,-3,1,-0.10,-1,yes,charge -3 vs -2 (further from neutral)
+her2_cdrh3_37,TTAAVGYAHD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-1,1,+0.00,+1,no,
+her2_cdrh3_39,SLYVNNYSYD,0,0,0,1,0,0,0,0,0,0,1,0,0,0,3,0.50,-1,0,+0.00,+1,yes,N-x-S/T +1
+her2_cdrh3_43,SLSLSDYAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,0,+0.00,+0,no,
+her2_cdrh3_57,DLSYYNHAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0.50,-2,1,+0.00,+0,no,
+her2_cdrh3_60,WKSLYDYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.60,-1,0,+0.10,+1,yes,hydrophobic 60% vs 50%
+her2_cdrh3_64,WHSLYEYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.60,-2,1,+0.10,+0,yes,hydrophobic 60% vs 50%
+her2_cdrh3_7,SLSLSNYAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-1,0,+0.00,+1,no,
+her2_cdrh3_82,STSAVDYAMD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,0,+0.00,+0,no,
+her2_cdrh3_85,STSALDYAMD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-2,0,+0.00,+0,no,
+her2_cdrh3_9,SLSLSNFAFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,-1,0,+0.00,+1,no,
+her2_cdrh3_95,WRSLFEYYFD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.60,-1,0,+0.10,+1,yes,hydrophobic 60% vs 50%
+her2_cdrh3_98,TRAAVGYAHD,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.50,0,1,+0.00,+2,no,
