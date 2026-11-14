@@ -140,6 +140,23 @@ Frameworks are identical across all designs (~0.37 Å), as expected — nothing
 there changed. Loops sit 1–2 Å beyond the prediction floor. The loops **have**
 moved; we are not claiming otherwise.
 
+### Ranking
+
+The 20 were selected for diversity, then ranked by Boltz-2 confidence relative to
+the wild-type baseline folded through the identical pipeline. The top 6 were
+additionally validated structurally (framework fit plus loop displacement), and
+the top 2 scored on AF2-IG for interface-specific confidence.
+
+Ranks 7–20 rest on Boltz-2 confidence alone.
+
+Two caveats we state rather than hide. The top margins are small — +0.003 and
++0.002 over baseline — and AF2-IG disagrees on the sign, placing both leads
+marginally below wild-type. We therefore rank on the ordering the two models
+broadly agree on, not on either margin. And d05 ranks third on Boltz-2
+confidence but has nearly the worst loop placement of the six we validated
+(2.984 Å against a 0.883 Å floor); where structural validation and Boltz-2
+confidence conflict, we weight the structural evidence.
+
 ### Lead designs
 
 **d15 — `WYGSAEYSLDS`**, 7 mutations. Highest Boltz-2 confidence, tied-best
