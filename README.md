@@ -78,6 +78,88 @@ Slots 2 and 4 are the same family: a deliberate paired bet, and their order is a
 (0.3234 vs 0.3238). Slots 1 and 3 also cluster at d<=2, so the four span three families,
 not four. Both cutoffs are in the CSV.
 
+## Results
+
+### Submitted ranking (20 designs)
+
+| # | CDRH3 | design id | min_ipae | iptm | b_pLDDT | dist | id% | mut | hyd | chg | dev |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | SLSLSNYAFD | her2_cdrh3_140 | 0.3076 | 0.926 | 98.59 | 3 | 30 | 7 | 0.50 | -1 | clean |
+| 2 | TRAAVGYAHD | her2_cdrh3_98 | 0.3234 | 0.903 | 98.32 | 4 | 30 | 7 | 0.50 | +0 | clean |
+| 3 | DLSYYNHAFD | her2_cdrh3_57 | 0.3559 | 0.885 | 97.94 | 5 | 20 | 8 | 0.50 | -2 | clean |
+| 4 | WSSAVGYAHD | her2_cdrh3_31 | 0.3238 | 0.926 | 98.16 | 3 | 40 | 6 | 0.50 | -1 | clean |
+| 5 | SLYVNNYSYD | her2_cdrh3_39 | 0.3288 | 0.902 | 98.13 | 4 | 20 | 8 | 0.50 | -1 | FLAG N-x-S/T |
+| 6 | DLFFPYYAFD | her2_cdrh3_27 | 0.3454 | 0.892 | 95.99 | 3 | 30 | 7 | 0.70 | -2 | FLAG hydrophobic |
+| 7 | TTAAVGYAHD | her2_cdrh3_37 | 0.3481 | 0.879 | 98.29 | 4 | 30 | 7 | 0.50 | -1 | clean |
+| 8 | YMSLYYYEFD | her2_cdrh3_184 | 0.3504 | 0.909 | 95.28 | 3 | 20 | 8 | 0.70 | -2 | FLAG hydrophobic |
+| 9 | YMSLYYYAFD | her2_cdrh3_134 | 0.3578 | 0.882 | 96.62 | 3 | 30 | 7 | 0.80 | -1 | FLAG hydrophobic |
+| 10 | DLSSSDHAFD | her2_cdrh3_192 | 0.3618 | 0.856 | 98.22 | 4 | 20 | 8 | 0.30 | -3 | FLAG charge |
+| 11 | SLSLSDYAFD | her2_cdrh3_43 | 0.3646 | 0.879 | 97.52 | 3 | 30 | 7 | 0.50 | -2 | clean |
+| 12 | DLSSSDFAFD | her2_cdrh3_147 | 0.3650 | 0.882 | 98.06 | 4 | 20 | 8 | 0.40 | -3 | FLAG charge |
+| 13 | SLSLSNFAFD | her2_cdrh3_9 | 0.3663 | 0.836 | 98.60 | 4 | 20 | 8 | 0.50 | -1 | clean |
+| 14 | WRSLSEYYFD | her2_cdrh3_148 | 0.3692 | 0.877 | 97.18 | 3 | 30 | 7 | 0.50 | -1 | clean |
+| 15 | DLSLHNHAFD | her2_cdrh3_181 | 0.3726 | 0.878 | 97.41 | 4 | 20 | 8 | 0.40 | -2 | clean |
+| 16 | WASLHDYYHD | her2_cdrh3_193 | 0.3735 | 0.893 | 95.63 | 3 | 30 | 7 | 0.50 | -2 | clean |
+| 17 | YASSSDYYFD | her2_cdrh3_114 | 0.3785 | 0.877 | 97.20 | 3 | 20 | 8 | 0.50 | -2 | clean |
+| 18 | WKSTTQYYFD | her2_cdrh3_22 | 0.3839 | 0.875 | 96.85 | 4 | 30 | 7 | 0.40 | +0 | clean |
+| 19 | AARPSSRSGSDDWDY | rep117 (de novo VHH) | 1.6377 | 0.887 | 94.64 | n/a | n/a | n/a | — | — | clean |
+| 20 | AARPWWKAGSDAYDY | rep106 (de novo VHH) | 1.7012 | 0.888 | 97.62 | n/a | n/a | n/a | — | — | FLAG N-x-S/T |
+
+Parent: `WGGDGFYAMD`, hydrophobic fraction 0.50, net charge -2.
+`min_ipae` lower is better; `iptm` and `b_pLDDT` higher; `dist` is minimum Hamming
+distance to 525,042 measured sequences, higher is more novel.
+
+**The spread is narrow.** `min_ipae` runs 0.308 to 0.384 across all 18 CDRH3 designs.
+The scores do not separate candidates as cleanly as a ranking implies, which is why the
+filters do the real work. De novo rows are a different molecule in a different system
+and are not comparable with the CDRH3 rows.
+
+### Excluded
+
+| design | why |
+|---|---|
+| WGPPGFYAFD (her2_cdrh3_70) | Distance 0. Present verbatim in the FACS screen, labelled `high`. A known binder, sampled 5x |
+| WGSPGFYAMD (her2_cdrh3_11, _28) | 80% identity to trastuzumab, distance 1 |
+| YMNLYYYAFD, DLSLSEHAFD | Cut to meet the 20-design limit; both developability-flagged |
+
+### Filter funnel
+
+| stage | count |
+|---|---|
+| designs generated | 200 |
+| distinct loops | 164 |
+| refolded with Boltz-2 | 60 (52 unique) |
+| pass strict novelty | 37 |
+| clean developability | 19 |
+| submitted | 18 CDRH3 + 2 VHH |
+
+### Stability proxy
+
+| | glycines | prolines | longest G/S run |
+|---|---|---|---|
+| parent WGGDGFYAMD | 3 | 0 | 2 |
+| SLSLSNYAFD | 0 | 0 | 1 |
+| TRAAVGYAHD | 1 | 0 | 1 |
+| DLSYYNHAFD | 0 | 0 | 1 |
+| WSSAVGYAHD | 1 | 0 | 2 |
+
+Across all 37: 33 have zero glycines, 4 have one, none has more than the parent.
+
+### De novo epitope check
+
+| design | min_ipae | hotspots within 4.5 A | footprint on trastuzumab epitope | verdict |
+|---|---|---|---|---|
+| rep106 | 1.70 | 3/4 | 73% (11 of 15) | on epitope |
+| rep117 | 1.87 | 3/4 | 79% (11 of 14) | on epitope |
+| rep48 | ~3 | 2/4 | 100% (9 of 9) | on epitope |
+| rank 4 | 5.54 | — | 53% | drifted |
+| rank 5 | 5.97 | — | partial | drifted |
+
+### De novo sequences
+
+    rep117  EVQLVESGGGLVQPGGSLRLSCAASGRSFSDYHMGWFRQAPGKGRELVASISSSGSTWYPDSVEGRFTISRDNAKRMVYLQMNSLRAEDTAVYYCAARPSSRSGSDDWDYWGQGTQVTVS
+    rep106  EVQLVESGGGLVQPGGSLRLSCAASGRTFTDYAMGWFRQAPGKGRELVANITTSGSTWYPDSVEGRFTISRDNAKRMVYLQMNSLRAEDTAVYYCAARPWWKAGSDAYDYWGQGTQVTVS
+
 ## De novo
 
 A VHH built on the caplacizumab framework against HER2 domain IV. The input had to be
